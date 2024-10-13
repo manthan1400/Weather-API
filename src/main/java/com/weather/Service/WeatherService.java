@@ -14,7 +14,8 @@ public class WeatherService {
 
 //    @Value("${weather.api.url}")
 //    private String apiKey;
-      private static  final String apiKey="6d2a83415cdd6b4e7fb96e4d3e750024";
+      private static  final String apiKey="8219bb2eae81767595bc37e90a2f73de";
+      //we have refresh key everytime we running application
 
 //    @Value("${weather.api.key}")
 //    private String api;
