@@ -12,14 +12,14 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class WeatherService {
 
-//    @Value("${weather.api.url}")
-//    private String apiKey;
-      private static  final String apiKey="8219bb2eae81767595bc37e90a2f73de";
+    @Value("${weather.api.key}")
+    private String apiKey;
+//  private static final String apiKey="8219bb2eae81767595bc37e90a2f73de";
       //we have refresh key everytime we running application
 
-//    @Value("${weather.api.key}")
-//    private String api;
-      private static final String api = "http://api.weatherstack.com/current?access_key=API_KEY&query=CITY";
+    @Value("${weather.api.url}")
+    private String api;
+//  private static final String api = "http://api.weatherstack.com/current?access_key=API_KEY&query=CITY";
 
 
     private final RestTemplate restTemplate;
