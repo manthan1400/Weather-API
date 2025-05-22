@@ -14,13 +14,10 @@ public class WeatherService {
 
     @Value("${weather.api.key}")
     private String apiKey;
-//  private static final String apiKey="8219bb2eae81767595bc37e90a2f73de";
-      //we have refresh key everytime we running application
+    //we have refresh key everytime we running application
 
     @Value("${weather.api.url}")
     private String api;
-//  private static final String api = "http://api.weatherstack.com/current?access_key=API_KEY&query=CITY";
-
 
     private final RestTemplate restTemplate;
 
@@ -30,7 +27,7 @@ public class WeatherService {
     }
 
     public WeatherResponse getWeather(String city) {
-        String finalAPI = api.replace("CITY", city).replace("API_KEY", apiKey);
+        String finalAPI = api.replace("CITY", city.trim()).replace("API_KEY", apiKey);
         System.out.println("Final API URL: " + finalAPI);
 
         ResponseEntity<WeatherResponse> response = restTemplate.exchange(finalAPI, HttpMethod.GET, null, WeatherResponse.class);

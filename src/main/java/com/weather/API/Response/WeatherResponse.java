@@ -1,9 +1,7 @@
 package com.weather.API.Response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import lombok.*;
-
 import java.util.List;
 
 @Getter
