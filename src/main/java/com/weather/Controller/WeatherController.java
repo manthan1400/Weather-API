@@ -23,7 +23,7 @@ public class WeatherController {
     public ResponseEntity<?> getWeather(@RequestParam String city) {
        try{
            String decryptedCity = CryptoUtil.decrypt(city);
-        WeatherResponse response = weatherService.getWeather(city);
+        WeatherResponse response = weatherService.getWeather(decryptedCity);
 
         if (response == null) {
             return new ResponseEntity<>("City not found or error occurred", HttpStatus.NOT_FOUND);

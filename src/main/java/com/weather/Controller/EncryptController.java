@@ -17,7 +17,7 @@ public class EncryptController {
     public void encryptCity(@RequestParam String city, HttpServletResponse response) {
         try {
             String encrypted = CryptoUtil.encrypt(city);
-            String encoded = URLEncoder.encode(encrypted, StandardCharsets.UTF_8.toString());
+            String encoded = URLEncoder.encode(encrypted, StandardCharsets.UTF_8);
 
             response.sendRedirect("/api/weather?city=" + encoded);
         } catch (Exception e) {
