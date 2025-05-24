@@ -26,7 +26,7 @@ public class DecryptController {
         log.info("Received request to decrypt city: {}", city);
         String decrypted = CryptoUtil.decrypt(city);
         String message = "DecryptController: Encoded=" + city + " | Decrypted=" + decrypted;
-        kafkaProducer.sendMessage("test-topic", message);
+//        kafkaProducer.sendMessage("test-topic", message);
         log.info("City decrypted and Kafka message sent: {}", message);
         return "Decrypted city: " + decrypted;
     }

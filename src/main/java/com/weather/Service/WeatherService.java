@@ -42,10 +42,10 @@ public class WeatherService {
 
         if (response.getStatusCode() != HttpStatus.OK) {
             log.error("Error response: {} - {}", response.getStatusCode(), response.getBody());
-            kafkaProducer.sendMessage("test-topic", "WeatherService: Failed to fetch weather for " + city);
+//            kafkaProducer.sendMessage("test-topic", "WeatherService: Failed to fetch weather for " + city);
             return null; // or throw an exception
         }
-        kafkaProducer.sendMessage("test-topic", "WeatherService: Weather fetched for " + city);
+//        kafkaProducer.sendMessage("test-topic", "WeatherService: Weather fetched for " + city);
         return response.getBody();
     }
 

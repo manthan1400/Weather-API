@@ -31,8 +31,8 @@ public class EncryptController {
         String encrypted = CryptoUtil.encrypt(city);
         String encoded = URLEncoder.encode(encrypted, StandardCharsets.UTF_8);
         String message = "EncryptController: City=" + city + " | Encoded=" + encoded;
-        kafkaProducer.sendMessage("test-topic", message);
+//        kafkaProducer.sendMessage("test-topic", message);
         log.info("City encrypted and Kafka message sent: {}", message);
-        response.sendRedirect("/api/weather?city=" + encoded);
+        response.sendRedirect("/weather?city=" + encoded);
     }
 }
