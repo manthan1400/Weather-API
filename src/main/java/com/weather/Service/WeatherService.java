@@ -1,7 +1,6 @@
 package com.weather.Service;
 
 import com.weather.API.Response.WeatherResponse;
-import com.weather.WeatherKafkaProducer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,8 +18,8 @@ public class WeatherService {
     @Value("${weather.api.key}")
     private String apiKey;
     //we have refresh key everytime we running application
-
-
+    @Autowired
+    private WeatherKafkaProducer kafkaProducer;
 
     @Value("${weather.api.url}")
     private String api;
@@ -40,9 +39,10 @@ public class WeatherService {
 
         if (response.getStatusCode() != HttpStatus.OK) {
             log.error("Error response: {} - {}", response.getStatusCode(), response.getBody());
+            kafkaProducer.sendMessage("test-topic", "WeatherService: Failed to fetch weather for " + city);
             return null; // or throw an exception
         }
-
+        kafkaProducer.sendMessage("test-topic", "WeatherService: Weather fetched for " + city);
         return response.getBody();
     }
 
