@@ -1,6 +1,9 @@
 package com.weather.Service;
 
 import com.weather.API.Response.WeatherResponse;
+import com.weather.WeatherKafkaProducer;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpMethod;
@@ -10,11 +13,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
+@Slf4j
 public class WeatherService {
 
     @Value("${weather.api.key}")
     private String apiKey;
     //we have refresh key everytime we running application
+
+
 
     @Value("${weather.api.url}")
     private String api;
@@ -28,12 +34,12 @@ public class WeatherService {
 
     public WeatherResponse getWeather(String city) {
         String finalAPI = api.replace("CITY", city.trim()).replace("API_KEY", apiKey);
-        System.out.println("Final API URL: " + finalAPI);
+        log.info("Final API URL: {}", finalAPI);
 
         ResponseEntity<WeatherResponse> response = restTemplate.exchange(finalAPI, HttpMethod.GET, null, WeatherResponse.class);
 
         if (response.getStatusCode() != HttpStatus.OK) {
-            System.out.println("Error response: " + response.getStatusCode() + " - " + response.getBody());
+            log.error("Error response: {} - {}", response.getStatusCode(), response.getBody());
             return null; // or throw an exception
         }
 
