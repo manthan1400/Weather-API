@@ -8,7 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
+/**
+ * REST controller for decrypting city names.
+ * Accepts an encrypted city name, decrypts it, sends a Kafka message, and returns the decrypted value.
+ * Endpoint: /api/decrypt?city={encrypted}
+ */
 @RestController
 @RequestMapping("/decrypt")
 @Slf4j

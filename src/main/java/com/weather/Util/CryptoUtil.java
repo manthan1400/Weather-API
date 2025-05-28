@@ -5,7 +5,10 @@ import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.SecureRandom;
 import java.util.Base64;
-
+/**
+ * Utility class for encrypting and decrypting city names.
+ * Provides static methods for secure transformation of city strings.
+ */
 public class CryptoUtil {
 
     private static final String AES = "AES";

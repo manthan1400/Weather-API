@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-
+/**
+ * REST controller for encrypting city names.
+ * Accepts a city name, encrypts it, sends a Kafka message, and redirects to the weather endpoint with the encrypted value.
+ * Endpoint: /api/encrypt?city={city}
+ */
 @RestController
 @RequestMapping("/encrypt")
 @Slf4j

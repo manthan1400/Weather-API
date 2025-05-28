@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
+/**
+ * REST controller for fetching weather data.
+ * Accepts an encrypted city name, decrypts it, fetches weather data, sends a Kafka message, and returns the result.
+ * Endpoint: /api/weather?city={encrypted}
+ */
 @RestController
 @RequestMapping("/weather")
 @Slf4j

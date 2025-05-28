@@ -10,7 +10,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
+/**
+ * Service for interacting with the Weatherstack API.
+ * Handles business logic for fetching and parsing weather data for a given city.
+ */
 @Service
 @Slf4j
 public class WeatherService {
